@@ -26,7 +26,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "puppeteer": "^10.x",
+    "puppeteer": "^13.x",
     "@axe-core/puppeteer": "^4.3.2"
   }
 }
