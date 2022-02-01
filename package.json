@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@axe-core/puppeteer": "^4.3.2",
-    "puppeteer": "^13.1.2"
+    "puppeteer": "^13.1.3"
   }
 }
