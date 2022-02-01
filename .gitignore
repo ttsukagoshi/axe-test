@@ -4,4 +4,5 @@ node_modules/
 # axe-test
 urls.txt
 axe-results.csv
+settings.json
 debug/
