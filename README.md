@@ -43,25 +43,34 @@ node .
 
 <img width="1294" alt="「axe-test.js」によって出力されたテスト結果 (.csv) のイメージ" src="https://user-images.githubusercontent.com/55706659/151901139-a87e171b-c37d-4938-867d-14183982eb1d.png">
 
-### テスト基準の設定変更
+### オプション設定
 
-「[./src/axe-test.js](https://github.com/ttsukagoshi/axe-test/blob/main/src/axe-test.js)」では、冒頭のユーザ設定で、テスト基準を設定しています。
+作業フォルダ直下にある `user-settings.json` を編集することで、初期設定を変更できます。
 
-```javascript
-const axeCoreTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
+#### 設定できる値
+
+<!-- prettier-ignore -->
+| 変数名 | データ型 | 意味 | 初期値 |
+| --- | --- | --- | --- |
+| `axeCoreTags` | *Array* | テストの基準となるアクセシビリティ水準を指定します。初期値は、WCAG 2.1 (および 2.0) の、達成基準レベル A と AA に相当するテストルールを適用して、テストを実行する設定となっています。ここに記述可能な水準については、[axe API Documentation の 「Axe-core Tags」のセクション](https://www.deque.com/axe/core-documentation/api-documentation/#user-content-axe-core-tags) をご参照ください。 | `["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]` |
+| `resultTypes` | *Array*  | 出力する結果の種類を指定します。 `inapplicable`: 判定対象外の基準/`incomplete`: 適合しているか判断できなかった基準/ `passes`: 適合している判断とされた基準/ `violations`: 適合していないと判断された基準。詳細は公式ドキュメントをご参照ください: https://www.deque.com/axe/core-documentation/api-documentation/#options-parameter | `["incomplete", "violations"]` |
+| `inputPath` | *String*  | URL一覧のテキストファイルのファイルパス | `./urls.txt` |
+| `inputEncode` | *String*  | URL一覧のテキストファイルの文字エンコード。サポートされている形式については公式ドキュメントを参照: https://nodejs.org/api/buffer.html#buffers-and-character-encodings | `utf8` |
+| `outputPath` | *String*  | 出力するCSVのファイルパス | `./axe-results.csv` |
+| `outputEncode` | *String*  | 出力するCSVファイルの文字エンコード。サポートされている形式については公式ドキュメントを参照: https://nodejs.org/api/buffer.html#buffers-and-character-encodings | `utf8` |
+
+#### `user-settings.json` の例
+
+変更した項目だけ残して、残りは削除しても問題ありません。削除した項目では自動的に初期値が適用されます。
+
+```json
+{
+  "axeCoreTags": ["wcag2a", "wcag2aa"],
+  "resultTypes": ["violations"],
+  "inputPath": "./private/urls.txt",
+  "inputEncode": "utf16le"
+}
 ```
-
-WCAG 2.1 (および 2.0) の、達成基準レベル A と AA に相当するテストルールを適用して、テストを実行する設定ということです。必要に応じて上記 1 行の記述を変更することで、テスト基準の設定を変更することができます。ここに記述可能なタグについては、[axe API Documentation の 「Axe-core Tags」のセクション](https://www.deque.com/axe/core-documentation/api-documentation/#user-content-axe-core-tags) をご参照ください。
-
-### テスト結果として出力する項目の調整
-
-「[./src/axe-test.js](https://github.com/ttsukagoshi/axe-test/blob/main/src/axe-test.js)」では、冒頭のユーザ設定で、テスト結果として出力する項目を定義しています。
-
-```javascript
-const resultTypes = ['incomplete', 'violations'];
-```
-
-現状では `incomplete` （適合しているか判断できなかった基準）と `violations` （適合していないと判断された基準）を返す設定となっています。
 
 ### コマンドラインへの出力
 
