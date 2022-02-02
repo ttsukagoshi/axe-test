@@ -1,3 +1,11 @@
+const fs = require('fs');
+const { AxePuppeteer } = require('@axe-core/puppeteer');
+const puppeteer = require('puppeteer');
+const AXE_LOCALE_JA = require('axe-core/locales/ja.json');
+const config = {
+  locale: AXE_LOCALE_JA, // テスト結果を日本語で出力するように設定する。
+};
+
 // 初期設定。詳細はREADMEを参照:
 // https://github.com/ttsukagoshi/axe-test/blob/main-ops/README.md
 const DEFAULT_SETTINGS = {
@@ -10,17 +18,8 @@ const DEFAULT_SETTINGS = {
 };
 // ユーザ設定ファイルのファイルパス
 const USER_SETTINGS_FILE_PATH = './user-settings.json';
-
-const fs = require('fs');
-const { AxePuppeteer } = require('@axe-core/puppeteer');
-const puppeteer = require('puppeteer');
-const AXE_LOCALE_JA = require('axe-core/locales/ja.json');
-const config = {
-  locale: AXE_LOCALE_JA, // テスト結果を日本語で出力するように設定する。
-};
-
 // 出力されるテスト結果のフィールド名（ヘッダ行）
-const reportHeader = [
+const REPORT_HEADER = [
   'URL',
   'Rule Type', // rule ID
   'Result Type', // inapplicable, incomplete, passes, or violations
@@ -71,7 +70,7 @@ const reportHeader = [
 
     for (let i = 0; i < urls.length; i++) {
       if (i === 0) {
-        const outputHeader = reportHeader.join(); // 出力1行目としてヘッダ行を追加
+        const outputHeader = REPORT_HEADER.join(); // 出力1行目としてヘッダ行を追加
         if (cliMode) {
           console.log(outputHeader);
         } else {
@@ -140,7 +139,11 @@ const reportHeader = [
         encoding: userSettings.outputEncode,
       });
     }
-    console.info('アクセシビリティ検査が完了しました。');
+    console.info(
+      `アクセシビリティ検査が完了しました。${
+        cliMode ? '' : userSettings.outputPath + ' に結果が出力されています。'
+      }`
+    );
   } catch (error) {
     console.error(error);
   }
