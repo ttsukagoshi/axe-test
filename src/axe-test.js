@@ -30,6 +30,7 @@ const REPORT_HEADER = [
   'DOM Element',
   'Help',
   'Help URL',
+  'WCAG index', // 1.4.3, 2.3.1, etc.
 ];
 
 (async () => {
@@ -96,7 +97,6 @@ const REPORT_HEADER = [
         .configure(config)
         .withTags(userSettings.axeCoreTags)
         .analyze();
-
       // テスト結果をCSVとして出力できるように整形
       userSettings.resultTypes.forEach((resultType) => {
         results[resultType].forEach((resultItem) => {
@@ -115,6 +115,20 @@ const REPORT_HEADER = [
                 node.target.join(),
                 resultItem.help,
                 resultItem.helpUrl,
+                resultItem.tags
+                  .reduce((arr, tag) => {
+                    if (tag.match(/^wcag\d{3}$/)) {
+                      arr.push(
+                        [
+                          tag.slice(-3, -2),
+                          tag.slice(-2, -1),
+                          tag.slice(-1),
+                        ].join('.')
+                      );
+                    }
+                    return arr;
+                  }, [])
+                  .join(' '),
               ]
                 .map((value) =>
                   String(value)
