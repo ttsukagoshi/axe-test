@@ -1,6 +1,7 @@
-# axe-test.js
+# ウェブアクセシビリティ検証ツール「axe-test」
+[![CodeQL](https://github.com/ttsukagoshi/axe-test/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ttsukagoshi/axe-test/actions/workflows/codeql-analysis.yml) [![Lint Code Base](https://github.com/ttsukagoshi/axe-test/actions/workflows/linter.yml/badge.svg)](https://github.com/ttsukagoshi/axe-test/actions/workflows/linter.yml)
 
-「axe-test.js」は、Deque Systems, Inc. が開発、公開しているウェブアクセシビリティ検証ツール「[axe](https://www.deque.com/axe/)」のコアエンジン「axe-core」を利用して、ウェブサイトのアクセシビリティ自動テストを実行するためのスクリプトです。Node.js ライブラリ「[Puppeteer](https://pptr.dev/)」と併せて使います。
+Deque Systems, Inc. が開発、公開しているウェブアクセシビリティ検証ツール「[axe](https://www.deque.com/axe/)」のコアエンジン「axe-core」を利用して、ウェブサイトのアクセシビリティ自動テストを実行するためのスクリプトです。Node.js ライブラリ「[Puppeteer](https://pptr.dev/)」と併せて使います。
 
 ウェブサイト全体 (数百ページ規模) を対象に、一括処理でアクセシビリティを検証し、その結果を、日本語でスプレッドシート (.csv ファイル) に出力することができます。
 
