@@ -6,6 +6,7 @@ node_modules/
 
 # axe-test
 urls.txt
+urls-test.txt
 axe-results.csv
 debug/
 urls/
