@@ -1,7 +1,7 @@
 {
   "axeCoreTags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"],
   "resultTypes": ["incomplete", "violations"],
-  "inputPath": "./urls.txt",
+  "inputPath": "./urls-test.txt",
   "inputEncode": "utf8",
   "outputPath": "./axe-results.csv",
   "outputEncode": "utf8"
