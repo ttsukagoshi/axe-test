@@ -1,5 +1,6 @@
 # ウェブアクセシビリティ検証ツール「axe-test」
-[![CodeQL](https://github.com/ttsukagoshi/axe-test/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ttsukagoshi/axe-test/actions/workflows/codeql-analysis.yml) [![Lint Code Base](https://github.com/ttsukagoshi/axe-test/actions/workflows/linter.yml/badge.svg)](https://github.com/ttsukagoshi/axe-test/actions/workflows/linter.yml)
+
+> 本Forkは現在、更新されていません。ttsukagoshi/axe-testの機能は [axe-scan](https://github.com/ttsukagoshi/axe-scan)に引き継がれましたので、そちらをご利用ください。
 
 Deque Systems, Inc. が開発、公開しているウェブアクセシビリティ検証ツール「[axe](https://www.deque.com/axe/)」のコアエンジン「axe-core」を利用して、ウェブサイトのアクセシビリティ自動テストを実行するためのスクリプトです。Node.js ライブラリ「[Puppeteer](https://pptr.dev/)」と併せて使います。
 
